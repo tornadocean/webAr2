@@ -1,36 +1,20 @@
 var express = require('express');
 var path = require('path');
 var browserSync = require('browser-sync');
-var routes = require('./routes/index');
+var map = require('./routes/map');
+var angular = require('./routes/angular');
 
     
 var app = express();
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/', routes);
+app.use('/', angular);
+app.use('/map', map);
 
-
-app.get('/api/nav', function (req, res) {
-    res.send({ 
-       data:  [
-      {id: 11, name: 'Mr. Nice'},
-      {id: 12, name: 'Narco'},
-      {id: 13, name: 'Bombasto'},
-      {id: 14, name: 'Celeritas'},
-      {id: 15, name: 'Magneta'},
-      {id: 16, name: 'RubberMan'},
-      {id: 17, name: 'Dynama'},
-      {id: 18, name: 'Dr IQ'},
-      {id: 19, name: 'Magma'},
-      {id: 20, name: 'Tornado'}
-    ]
-    });
-});
-
-app.get('*', function(req, res, next) {
+app.all('*', function(req, res, next) {
      res.redirect('/');
 })
 
@@ -79,7 +63,7 @@ var server = app.listen(port, function () {
     var listeningPort = server.address().port;
     browserSync({
         proxy: 'localhost:' + port,
-        files: [__dirname + '/public/**/*.{js,css,html}']
+        files: [__dirname + '/public/**/*.{js,css,html,ts}']
     });
     console.log("Yo!! The server is listening on port: " + listeningPort);
 });

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  script(src='/javascripts/index.js')
+  a(href='javascript:get_jsonp();') Click me for jsonp
+  br
+  textarea(id='rjsonp',cols='50', rows='3')
+  br
+  a(href='javascript:get_json();') Click me for json
+  br
+  textarea(id="rjson", cols="50", rows="3")
+  br
+  div#onegoods
+  input(type="text",id="username",name="username" style="width:150px;border:1px #ccccff solid;")
+  br
+  button(id="loginBtn",name="loginBtn", onclick="loginClick()") 登录
+  div#con
+    #{title}

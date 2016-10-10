@@ -20,7 +20,7 @@ import './rxjs-extensions';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    //InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing 
     ],
   declarations: [ 

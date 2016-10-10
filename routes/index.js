@@ -14,4 +14,13 @@ router.get('/json', function(req, res) { //#返回json
     res.send({ status: req.query.name });
 });
 
+router.get('/api/nav', function (req, res) {
+    res.send({
+        data: [
+            'Home',
+            'About'
+        ]
+    });
+});
+
 module.exports = router;
